@@ -1,0 +1,99 @@
+.\"  Copyright (c) 2004 Peter Antoine.  All rights reserved.
+.\"
+.\"  See the accompanying file licence.txt.
+.\"  If this file is not present, the documentation and code are released
+.\"  under the artistic licence.
+.\"
+.\"  vtags.1 by Peter Antoine.
+.\"
+.\"  (this file is based on unzip.1).
+.\"
+.\" =========================================================================
+.\" define .EX/.EE (for multiline user-command examples; normal Courier font)
+.de EX
+.in +4n
+.nf
+.ft CW
+..
+.de EE
+.ft R
+.fi
+.in -4n
+..
+.\" =========================================================================
+.TH VTAGS 1L "20 September 2007 (v0.8)" "VTAGS"
+.SH NAME
+vtags \- VHDL TAGS file generator.
+.PD
+.SH SYNOPSIS
+\fBvtags\fP[\fB\-r\fP] [\fB\-R\fP] [\fB\-u\fP] [\fB\-q\fP] [\fB\-e [file_extension,[file_extension,[...]]\fP] [\fB\-f file_path\fP] \fB[path,[path,[...]]\fP
+.PD
+.\" =========================================================================
+.SH DESCRIPTION
+\fIvtags\fP will generate a \fItags\fP file that can be used by tagging editors
+like vi(m). It is designed to generate tags from VHDL '87 files. It should work
+with later versions of VHDL but does not support all the language constructs. The
+most important of these being 'configuration'. 
+It will generate a tags file that is compatible with ctags generated
+files. This means it should work with any tagging editor. But this has only been
+tested with vim.
+.PD
+.\" =========================================================================
+.SH ARGUMENTS
+.TP
+.IR path_list [path,[path,[...]]
+This is a comma separated list of files and directories that are to be searched
+for files that match the extension list (or the default one). This files will
+be used to generate the tags file.
+.TP
+.B \-e [file_extension,[file_extension,[...]]
+\fBExtension List\fP.
+This is a comma separated list of file types that will be searched. The default 
+is vhdl,vhd. These will be searched both as upper and lower case.
+.TP
+.B \-f file_name
+\fBTags File\fP.
+The TAGS file to generate. If this is not present it will
+default to "./tags". If name = '-' then its written to stdout.
+.TP
+.B \-l  [1|2]      
+\fBFormat level\fP.
+.EX
+Level 1 not extensions, just the basic tags.
+.EE
+.EX
+Level 2 add the extensions (;") stuff.
+.EE
+.\" =========================================================================
+.SH OPTIONS
+
+.TP
+.B \-R
+\fBRecursive\fP mode. 
+This will cause the program to search the sub-directories as
+well.
+.TP
+.B \-r
+\fBRecursive\fP mode. 
+same as above.
+.TP
+.B \-u
+\fBUnsorted\fP mode.
+This will generate an unsorted tags file.
+.PD
+.\" =========================================================================
+.SH URL
+The VTAGS home page is currently at
+.EX
+\fChttp://www.peterantoine.me.uk/vtags.html\fR
+.EE
+.PD
+.\" =========================================================================
+.SH AUTHORS
+VTAGS has been written by Peter Antoine.
+.PD
+.\" =========================================================================
+.SH VERSIONS
+.PD 0
+.IP "v0.8\t20 Sep 2007" \w'\t\t'u
+.PD

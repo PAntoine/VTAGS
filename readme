@@ -1,0 +1,24 @@
+VTAGS
+
+by Peter Antoine
+
+Building
+--------
+
+If you have gmake install call:
+make
+
+Else if you have nmake installed call:
+nmake -f makevc
+
+and that's it. 
+
+The docs directory has a man page that needs to be copied into you manpath
+and that is it.
+
+
+Please send any bugs to: vtags@peterantoine.me.uk.
+
+Thanks,
+
+Peter.

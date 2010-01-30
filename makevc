@@ -1,0 +1,27 @@
+# visual c++ nmake file
+CC= cl
+CCOPTS= -c -nologo
+SOURCEDIR= src
+OBJECTDIR= obj
+
+FILES=  $(OBJECTDIR)\add_to_index.obj \
+		$(OBJECTDIR)\find_first_dir.obj \
+		$(OBJECTDIR)\find_next_file.obj \
+		$(OBJECTDIR)\find_next_tag.obj \
+		$(OBJECTDIR)\get_index_item.obj \
+		$(OBJECTDIR)\release_index.obj \
+		$(OBJECTDIR)\vtags_extras.obj \
+		$(OBJECTDIR)\is_dir.obj \
+		$(OBJECTDIR)\make_tags.obj
+
+vtags.exe: src\vtags.c $(FILES)
+	@$(CC) -nologo src\vtags.c $(FILES)
+	@move vtags.obj $(OBJECTDIR)
+
+{$(SOURCEDIR)}.c{$(OBJECTDIR)}.obj:
+	@$(CC) /Fo$@ -c -nologo $<
+
+clean:
+	@del $(FILES)
+	@del obj\vtags.obj
+	@del vtags.exe
