@@ -86,6 +86,10 @@
 ---                              the build. Also sorted out the temp
 ---                              file cross platform creation issues.
 ---                              Also fixed the very broken makefiles.
+--- 0.11      PA     10.12.2010  BUG FIX: The find first directory 
+                                 function had a problem with its name
+								 creation. This would stop the code 
+								 walking the tree properly.
 -----------------------------------------------------------------------}}}*/
 
 #include <fcntl.h>
@@ -100,7 +104,7 @@
 #include "vtags.h"
 #include "dir_stuff.h"
 
-#define	__VTAGS_VERSION__	"0.10"
+#define	__VTAGS_VERSION__	"0.11"
 
 typedef enum{
 		ERROR_OK,
@@ -277,7 +281,7 @@ int	main(int argc, char** argv)
 				
 	if (!quiet)
 	{
-		printf( "\nVTAGS version " __VTAGS_VERSION__ " - Copyright (c) 2004,2005,2007 and 2008 Peter Antoine\n"
+		printf( "\nVTAGS version " __VTAGS_VERSION__ " - Copyright (c) 2004 - 2010 Peter Antoine\n"
 				"All Rights reserved -- Released under the conditions of the Artistic Licence\n\n");
 	}
 	

@@ -13,8 +13,11 @@ CCOPT	= -c
 vtags:	$(OBJECTS)
 	@$(CC) $(CCOUT) vtags $(OBJECTS) -g
 
-$(OBJECTS): $(SOURCE_FILES) $(SOURCE_DIR)vtags.h
+$(OBJECTS): obj $(SOURCE_FILES) $(SOURCE_DIR)vtags.h
 	@$(CC) $(CCOPT) $(CCOUT)$(@) $(SOURCE_DIR)$(*F).c -g
+
+obj:
+	@mkdir obj
 
 clean:
 	-@rm $(OBJECTS)

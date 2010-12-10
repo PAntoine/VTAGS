@@ -75,7 +75,7 @@ int		find_first_dir(char* start_path,DIR_ENTRY* dir_tree,int* curr_dir,int recur
 							dir_tree[*curr_dir].name = dir_tree[*curr_dir-1].name + dir_tree[*curr_dir-1].size;
 							dir_tree[*curr_dir].size = cpystrlen(dir_tree[*curr_dir].name,d_ent->d_name,NAME_MAX);
 							dir_tree[*curr_dir].name[dir_tree[*curr_dir].size++] = DIR_DELIMETER;
-							dir_tree[*curr_dir].name[dir_tree[*curr_dir].size++] = '\0';
+							dir_tree[*curr_dir].name[dir_tree[*curr_dir].size] = '\0';
 
 							/* open the dir */
 							dir_tree[*curr_dir].dir = opendir(d_ent->d_name);
@@ -170,7 +170,7 @@ int		find_first_dir(char* start_path, DIR_ENTRY* dir_tree, int* curr_dir,int rec
 							dir_tree[*curr_dir].name = dir_tree[*curr_dir-1].name + dir_tree[*curr_dir-1].size;
 							dir_tree[*curr_dir].size = cpystrlen(dir_tree[*curr_dir].name,FileData.cFileName,NAME_MAX);
 							dir_tree[*curr_dir].name[dir_tree[*curr_dir].size++] = DIR_DELIMETER;
-							dir_tree[*curr_dir].name[dir_tree[*curr_dir].size++] = '\0';
+							dir_tree[*curr_dir].name[dir_tree[*curr_dir].size] = '\0';
 							
 							dir_tree[*curr_dir].dir = FindFirstFile("*.*",&FileData);
 						}
