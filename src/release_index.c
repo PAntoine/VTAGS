@@ -11,6 +11,7 @@
 
 #include "vtags.h"
 #include <stdio.h>
+#include <malloc.h>
 
 extern	TAG_TABLE	tag_table;
 

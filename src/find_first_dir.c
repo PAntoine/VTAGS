@@ -30,7 +30,7 @@ extern char	full_path[];
 /*------------------------------------------------------------*
  * POSIX Version
  *
- * This uses opendir, et al. to negoitiate the dir tree.
+ * This uses opendir, et al. to negotiate the dir tree.
  *------------------------------------------------------------*/
 int		find_first_dir(char* start_path,DIR_ENTRY* dir_tree,int* curr_dir,int recursive)
 {
@@ -48,9 +48,14 @@ int		find_first_dir(char* start_path,DIR_ENTRY* dir_tree,int* curr_dir,int recur
 	/* set the base of the search */
     dir_tree[*curr_dir].dir = opendir(start_path);
 	dir_tree[*curr_dir].size = cpystrlen(dir_tree[*curr_dir].name,start_path,NAME_MAX);
-	dir_tree[*curr_dir].name[dir_tree[*curr_dir].size++] = DIR_DELIMETER;
-	dir_tree[*curr_dir].name[dir_tree[*curr_dir].size] = '\0';
 
+	if (dir_tree[*curr_dir].name[dir_tree[*curr_dir].size-1] != DIR_DELIMETER)
+	{
+		dir_tree[*curr_dir].name[dir_tree[*curr_dir].size++] = DIR_DELIMETER;
+	}
+	
+	dir_tree[*curr_dir].name[dir_tree[*curr_dir].size] = '\0';
+				
 	if (dir_tree[*curr_dir].dir != FAILED_TO_OPEN_DIR)
 		chdir(start_path);
 

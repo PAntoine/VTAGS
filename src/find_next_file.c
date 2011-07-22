@@ -43,7 +43,7 @@ int		find_next_file(DIR_ENTRY* dir_tree,int* curr_dir,char** extention_list,char
 	
 	struct	dirent*	d_ent;
     struct	stat	dir_stat;
-	
+									
 	if (*curr_dir < MAX_DEPTH && *curr_dir > -1) 
 	{
 		do
@@ -110,9 +110,10 @@ int		find_next_file(DIR_ENTRY* dir_tree,int* curr_dir,char** extention_list,char
 				/* we are now at the end of a (empty?) dir
 				 * let go back up a level
 				 */
-				dir_tree[*curr_dir].name[0] = '\0';
-				chdir(full_path);
 
+				dir_tree[*curr_dir].name[0] = '\0';
+				chdir("..");
+				
 				closedir(dir_tree[*curr_dir].dir);
 				*curr_dir = *curr_dir - 1;
 			}
